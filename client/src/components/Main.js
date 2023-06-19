@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { BiPencil } from "react-icons/bi";
+
+import Template from "./Template";
+import TodoList from "./TodoList";
 
 const Container = styled.div`
 	width: 100%;
@@ -58,7 +62,7 @@ const BodyButton = styled.button`
 	}
 `;
 
-const TodoList = styled.div`
+const TodoMain = styled.div`
 	width: 96%;
 	background-color: #fff3f3;
 	border-radius: 30px;
@@ -67,6 +71,13 @@ const TodoList = styled.div`
 `;
 
 function Main() {
+	const [todos, setTodos] = useState([
+		// todos 할일의 목록들 , setTodos 할일의 목록들을 조작할 수 있는 함수
+		{ id: 1, text: "할일 1", checked: true },
+		{ id: 2, text: "할일 2", checked: false },
+		{ id: 3, text: "할일 3", checked: true },
+	]);
+
 	return (
 		<Container>
 			<MainTitle>All-in-one schedule</MainTitle>
@@ -77,7 +88,12 @@ function Main() {
 						<p>Add todolist</p>
 					</BodyButton>
 				</FirstSection>
-				<TodoList>todolist</TodoList>
+				<TodoMain>
+					todolist
+					<Template>
+						<TodoList todos={todos} />
+					</Template>
+				</TodoMain>
 			</MainBody>
 		</Container>
 	);
