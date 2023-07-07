@@ -5,6 +5,8 @@ const Container = styled.div`
 	background-color: skyblue;
 `;
 
+const InnerContainer = styled.div``;
+
 function TodoItem({ todo }) {
 	const { id, text, checked } = todo;
 
